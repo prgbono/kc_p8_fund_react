@@ -1,12 +1,16 @@
 import './App.css';
-import AdvertsPage from './components/ads/AdvertsPage';
+
+// import AdvertsPage from './components/adverts/AdvertsPage';
+import { NodepopLayout } from './components/layout/NodepopLayout.js'
+
 
 function App() {
   return (
-    <div className="App">
-      <p>This is the new nodePop in React</p>
-      <AdvertsPage/>
+    <div className="App" id='app'>
+        {/* <AdvertsPage/> */}
+        <NodepopLayout />
     </div>
+    
   );
 }
 

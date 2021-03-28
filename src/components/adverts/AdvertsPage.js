@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAdverts } from "./../../api/adverts";
+import { getAdverts } from "../../api/adverts";
 
 const AdvertsPage = () => {
   const [adverts, setAdverts] = React.useState([]);
