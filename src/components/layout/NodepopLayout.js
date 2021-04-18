@@ -10,7 +10,6 @@ export const NodepopLayout = ({ children }) => {
     <Layout>
       <Header>
         {/* FIXME: Estilos directo*/}
-        <span style={{color: '#fff'}}>NodePop</span>
         <Button icon={<SearchOutlined />}>Search</Button>
         <Button type="primary">Sign Up</Button>
         <Button type="primary">Login</Button>
