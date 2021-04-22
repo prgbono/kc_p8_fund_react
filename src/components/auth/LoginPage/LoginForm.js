@@ -3,9 +3,9 @@ import FormField from './../../shared/FormField.js'
 import Button  from './../../shared/Button.js'
 import './LoginForm.css';
 
-function LoginForm() {
+function LoginForm({onSubmit}) {
   const [credentials, setCredentials] = React.useState({
-    username: '',
+    email: '',
     password: '',
   });
 
@@ -14,23 +14,38 @@ function LoginForm() {
     setCredentials(oldCredentials => {
       const newCredentials = {
         ...oldCredentials,
-        [ev.target.name]: ev.target.value, //[ev.target.name] === ['username'] or ['password'] new ECMAScript6  
+        [ev.target.name]: ev.target.value, //[ev.target.name] === ['email'] or ['password'] new ECMAScript6  
       };
       return newCredentials;
     })
   }
 
   //Destructuring. Let us disable Login button if not populated any of the inputs
-  const {username, password} = credentials;
+  const {email, password} = credentials;
+
+  const handleSubmit = async event =>  {
+    event.preventDefault();
+
+    // TODO: Mejorar este código.
+    try {
+      const token = await onSubmit(credentials);
+      console.log('token: ', {token});
+    } catch (error) {
+      console.log('error: ', error);
+    }//  finally {
+    //   setIsLoading(false);
+    // }
+    
+  }
 
   return (
-    <form className="loginForm">
+    <form className="loginForm" onSubmit={handleSubmit}>
       <FormField
         type="text"
-        name="username"
-        label="Username"
+        name="email"
+        label="Email"
         className="loginForm-field"
-        value= {username} //tied with component state
+        value= {email} //tied with component state
         onChange= {handleCredentialsChange}
       />
       <FormField
@@ -41,7 +56,7 @@ function LoginForm() {
         value= {password} //tied with component state
         onChange= {handleCredentialsChange}
       />
-      <Button type="submit" className="loginForm-submit" variant="primary" disabled={!username || !password}>
+      <Button type="submit" className="loginForm-submit" variant="primary" disabled={!email || !password}>
         Log in
       </Button>
     </form>

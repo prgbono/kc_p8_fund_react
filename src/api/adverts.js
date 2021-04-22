@@ -1,8 +1,8 @@
-import interceptor from './interceptor'
+import axios from './axiosClient'
 
 const advertsBaseUrl = '/api/v1';
 
 export const getAdverts = () => {
   const url = `${advertsBaseUrl}/adverts`;
-  return interceptor.get(url);
+  return axios.get(url);
 }
