@@ -16,7 +16,6 @@ export const NodepopLayout = ({
     <>
       <Layout {...props}>
         <Header>
-          {/* FIXME: Estilos directo*/}
           <Button icon={<SearchOutlined />}>Search</Button>
           <Button type="primary">Sign Up</Button>
           <Button type="primary">Login</Button>

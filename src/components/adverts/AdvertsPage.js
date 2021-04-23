@@ -1,18 +1,28 @@
 import React from 'react';
-import { getAdverts } from "../../api/adverts";
+import { getAdverts } from '../../api/adverts';
 
 const AdvertsPage = () => {
   const [adverts, setAdverts] = React.useState([]);
-  
+
   React.useEffect(() => {
+    //TODO: hacerlo con async-await
     getAdverts()
-    .then(setAdverts)
-    .catch(error => console.log('Error: ', error));
+      .then((ads) => {
+        console.log('getAdverts useEffect, setAdverts: ', ads);
+      })
+      .catch((error) => {
+        console.log('Error: ', error);
+      });
   }, []);
-  const items = adverts.map(advert => <li key={advert.id}>{advert.content}</li>);
+
+  // TODO: click en ad -> Ir al detalle
+  const items = adverts.map((advert) => (
+    <li key={advert.id}>{advert.content}</li>
+  ));
 
   return (
-    <div className="tweetsPage">
+    <div className='tweetsPage'>
+      This is AdvertsPage
       <ul>{items}</ul>
     </div>
   );
