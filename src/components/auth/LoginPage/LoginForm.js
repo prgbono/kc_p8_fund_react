@@ -25,14 +25,7 @@ function LoginForm({ onSubmit }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const token = await onSubmit(credentials);
-      //TODO: save token in Storage
-    } catch (error) {
-      console.log("error: ", error);
-    } finally {
-      console.log(`Finally del try-catch del login`);
-    }
+    onSubmit(credentials);
   };
 
   return (
