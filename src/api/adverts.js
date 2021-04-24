@@ -1,6 +1,6 @@
-import axios from "./axiosClient";
+import axios from './axiosClient';
 
-const advertsBaseUrl = "/api/v1";
+const advertsBaseUrl = '/api/v1';
 
 export const getAdverts = () => {
   const url = `${advertsBaseUrl}/adverts`;
