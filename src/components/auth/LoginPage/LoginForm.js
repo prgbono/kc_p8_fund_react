@@ -1,12 +1,12 @@
-import React from "react";
-import FormField from "./../../shared/FormField.js";
-import Button from "./../../shared/Button.js";
-import "./LoginForm.css";
+import React from 'react';
+import FormField from './../../shared/FormField.js';
+import Button from './../../shared/Button.js';
+import './LoginForm.css';
 
-function LoginForm({ onSubmit }) {
+function LoginForm({ onSubmit, isLoading }) {
   const [credentials, setCredentials] = React.useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const handleCredentialsChange = (ev) => {
@@ -29,28 +29,28 @@ function LoginForm({ onSubmit }) {
   };
 
   return (
-    <form className="loginForm" onSubmit={handleSubmit}>
+    <form className='loginForm' onSubmit={handleSubmit}>
       <FormField
-        type="text"
-        name="email"
-        label="Email"
-        className="loginForm-field"
+        type='text'
+        name='email'
+        label='Email'
+        className='loginForm-field'
         value={email} //tied with component state
         onChange={handleCredentialsChange}
       />
       <FormField
-        type="password"
-        name="password"
-        label="password"
-        className="loginForm-field"
+        type='password'
+        name='password'
+        label='password'
+        className='loginForm-field'
         value={password} //tied with component state
         onChange={handleCredentialsChange}
       />
       <Button
-        type="submit"
-        className="loginForm-submit"
-        variant="primary"
-        disabled={!email || !password}
+        type='submit'
+        className='loginForm-submit'
+        variant='primary'
+        disabled={isLoading || !email || !password}
       >
         Log in
       </Button>

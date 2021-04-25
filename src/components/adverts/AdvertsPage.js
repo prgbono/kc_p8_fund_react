@@ -18,6 +18,7 @@ const AdvertsPage = () => {
   const { Meta } = Card;
   const ads = adverts.map((advert) => (
     <Card
+      size='small'
       hoverable
       style={{ width: 240 }}
       cover={
