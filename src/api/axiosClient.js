@@ -25,4 +25,8 @@ export const setAuthorizationHeader = (token) => {
   ] = `Bearer ${accessToken}`;
 };
 
+export const removeAuthorizationHeader = () => {
+  delete axiosClient.defaults.headers.common['Authorization'];
+};
+
 export default axiosClient;

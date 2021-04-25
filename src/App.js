@@ -1,18 +1,25 @@
-import React from "react";
-import "./App.css";
-import { NodepopLayout } from "./components/layout/NodepopLayout.js";
-
-// import AdvertsPage from "./components/adverts/AdvertsPage.js";
-// import { LoginPage } from "./components/auth/LoginPage/index.js";
+import React from 'react';
+import './App.css';
+import { NodepopLayout } from './components/layout/NodepopLayout.js';
+import { logout } from './api/auth.js';
 
 function App() {
   const [isLogged, setIsLogged] = React.useState(false);
 
   const handleLogin = () => setIsLogged(true);
 
+  const handleLogout = () => {
+    setIsLogged(false);
+    logout();
+  };
+
   return (
-    <div className="App" id="app">
-      <NodepopLayout isLogged={isLogged} onHandleLogin={handleLogin} />
+    <div className='App' id='app'>
+      <NodepopLayout
+        isLogged={isLogged}
+        onHandleLogin={handleLogin}
+        onHandleLogout={handleLogout}
+      />
     </div>
   );
 }

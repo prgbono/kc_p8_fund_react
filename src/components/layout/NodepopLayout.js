@@ -10,6 +10,7 @@ export const NodepopLayout = ({
   children,
   isLogged,
   onHandleLogin,
+  onHandleLogout,
   ...props
 }) => {
   console.log(`isLogged value: ${isLogged}`);
@@ -19,8 +20,10 @@ export const NodepopLayout = ({
       <Layout {...props}>
         <Header>
           <Button icon={<SearchOutlined />}>Search</Button>
-          <Button type='primary'>Sign Up</Button>
-          <Button type='primary'>Login</Button>
+          {/* <Button type='primary'>Sign Up</Button> */}
+          <Button type='primary' onClick={onHandleLogout}>
+            {isLogged ? 'Logout' : 'Login'}
+          </Button>
         </Header>
         <Content>
           {isLogged ? <AdvertsPage /> : <LoginPage onLogin={onHandleLogin} />}
