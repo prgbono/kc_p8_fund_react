@@ -3,6 +3,7 @@ import { Button, Layout } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import AdvertsPage from './../../components/adverts/AdvertsPage.js';
 import { LoginPage } from './../../components/auth/LoginPage/index.js';
+import PropTypes from 'prop-types';
 
 const { Header, Footer, Content } = Layout;
 
@@ -32,4 +33,13 @@ export const NodepopLayout = ({
       </Layout>
     </>
   );
+};
+
+NodepopLayout.propTypes = {
+  onHandleLogin: PropTypes.func.isRequired,
+  onHandleLogout: PropTypes.func.isRequired,
+};
+
+NodepopLayout.defaultProps = {
+  isLogged: false,
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import FormField from './../../shared/FormField.js';
 import Button from './../../shared/Button.js';
 import './LoginForm.css';
+import PropTypes from 'prop-types';
 
 function LoginForm({ onSubmit, isLoading }) {
   const [credentials, setCredentials] = React.useState({
@@ -57,5 +58,13 @@ function LoginForm({ onSubmit, isLoading }) {
     </form>
   );
 }
+
+LoginForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+
+LoginForm.defaultProps = {
+  isLoading: false,
+};
 
 export default LoginForm;
