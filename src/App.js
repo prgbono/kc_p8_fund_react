@@ -2,9 +2,10 @@ import React from 'react';
 import './App.css';
 import { NodepopLayout } from './components/layout/NodepopLayout.js';
 import { logout } from './api/auth.js';
+import propTypes from 'prop-types';
 
-function App() {
-  const [isLogged, setIsLogged] = React.useState(false);
+function App({ isAlreadyLogged }) {
+  const [isLogged, setIsLogged] = React.useState(isAlreadyLogged);
 
   const handleLogin = () => setIsLogged(true);
 
@@ -23,5 +24,9 @@ function App() {
     </div>
   );
 }
+
+App.propTypes = {
+  isAlreadyLogged: propTypes.bool.isRequired,
+};
 
 export default App;
