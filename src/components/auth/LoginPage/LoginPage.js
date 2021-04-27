@@ -6,13 +6,21 @@ import PropTypes from 'prop-types';
 function LoginPage({ onLogin }) {
   const [error, setError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
+  const isLogged = React.useRef(false);
+
+  // Avoid React error: can’t perform a react state update on an unmounted component with useEffect and useRef
+  React.useEffect(() => {
+    if (isLogged.current) {
+      onLogin(); //set user logged in App.js state
+    }
+  }, [isLogged.current, onLogin]);
 
   const handleSubmit = async (credentials) => {
     //TODO: Configure try-catch on Axios client
     try {
       setIsLoading(true);
       await login(credentials);
-      onLogin(); //set user logged in App.js state
+      isLogged.current = true;
     } catch (error) {
       //TODO: if 401-Unauthorized send the user a more understable message, 'Invalid Credentials'
       setError(error);
