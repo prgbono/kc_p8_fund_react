@@ -8,8 +8,9 @@ const authUrl = '/api/auth';
 
 export const login = async (credentials) => {
   const accessToken = await axios.post(`${authUrl}/login`, credentials);
-  storage.set(`${process.env.REACT_APP_TOKEN_LS}`, accessToken);
   setAuthorizationHeader(accessToken);
+  if (credentials.remember)
+    storage.set(`${process.env.REACT_APP_TOKEN_LS}`, accessToken);
   return accessToken;
 };
 
