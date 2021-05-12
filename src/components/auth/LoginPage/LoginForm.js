@@ -8,21 +8,26 @@ function LoginForm({ onSubmit, isLoading }) {
   const [credentials, setCredentials] = React.useState({
     email: '',
     password: '',
+    remember: false,
   });
 
-  const handleCredentialsChange = (ev) => {
+  const handleCredentialsChange = (event) => {
     // Return new credentials as an arrow function if new state depends on old one
     setCredentials((oldCredentials) => {
-      const newCredentials = {
+      const target = event.target;
+      const value = target.type === 'checkbox' ? target.checked : target.value;
+      const name = target.name;
+
+      let newCredentials = {
         ...oldCredentials,
-        [ev.target.name]: ev.target.value, //[ev.target.name] === ['email'] or ['password'] new ECMAScript6
+        [name]: value,
       };
       return newCredentials;
     });
   };
 
   //Destructuring. Let us disable Login button if not populated any of the inputs
-  const { email, password } = credentials;
+  const { email, password, remember } = credentials;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -47,6 +52,15 @@ function LoginForm({ onSubmit, isLoading }) {
         value={password} //tied with component state
         onChange={handleCredentialsChange}
       />
+      <label>
+        Remember me
+        <input
+          name='remember'
+          type='checkbox'
+          checked={remember}
+          onChange={handleCredentialsChange}
+        />
+      </label>
       <Button
         type='submit'
         className='loginForm-submit'
