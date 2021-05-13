@@ -27,8 +27,9 @@ const AdvertsPage = () => {
           src='https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png'
         />
       }
+      actions={[`${advert.price}€`, advert.sale ? 'Sell' : 'Buy']}
     >
-      <Meta title={advert.name} description={advert.price} />
+      <Meta title={advert.name} description={advert.tags} />
     </Card>
   ));
 
