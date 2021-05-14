@@ -6,7 +6,7 @@ const AdvertsList = ({ adverts }) => {
 
   const { Meta } = Card;
   const ads = adverts.map(({ id, price, sale, tags, name, ...advert }) => (
-    <Link to={`/adverts/${id}`}>
+    <Link to={`/adverts/${id}`} key={id}>
       <Card
         size='small'
         hoverable
