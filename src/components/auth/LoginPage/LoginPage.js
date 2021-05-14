@@ -15,7 +15,7 @@ function LoginPage({ onLogin }) {
     }
   }, [isLogged.current, onLogin]);
 
-  const handleSubmit = async (credentials) => {
+  const handleSubmit = async credentials => {
     //TODO: Configure try-catch on Axios client
     try {
       setIsLoading(true);

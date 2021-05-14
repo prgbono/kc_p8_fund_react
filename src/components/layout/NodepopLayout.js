@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Layout } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import AdvertsPage from './../../components/adverts/AdvertsPage.js';
+import AdvertsPage from '../Adverts/AdvertsPage.js';
 import { LoginPage } from './../../components/auth/LoginPage/index.js';
 import PropTypes from 'prop-types';
 

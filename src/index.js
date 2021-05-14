@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+// import './index.css';
 import 'antd/dist/antd.css';
 import App from './App';
 import storage from './utils/storage.js';
@@ -11,7 +12,9 @@ if (accessToken) setAuthorizationHeader(accessToken);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App isAlreadyLogged={!!accessToken} />
+    <Router>
+      <App isAlreadyLogged={!!accessToken} />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root'),
 );

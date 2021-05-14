@@ -1,0 +1,26 @@
+[
+  {
+    "createdAt": "2021-03-27T19:09:11.000Z",
+    "name": "advert1",
+    "sale": true,
+    "price": 10,
+    "tags": ["lifestyle"],
+    "photo": null
+  },
+  {
+    "createdAt": "2021-04-24T16:53:55.000Z",
+    "name": "Runner shoes",
+    "sale": false,
+    "price": 120,
+    "tags": ["lifestyle"],
+    "photo": "/public/1619283235571-966074913.jpg"
+  },
+  {
+    "createdAt": "2021-04-27T11:41:16.000Z",
+    "name": "Mobile phone",
+    "sale": false,
+    "price": 350.15,
+    "tags": ["mobile"],
+    "photo": "/public/1619523676629-805276532.jpg"
+  }
+]
