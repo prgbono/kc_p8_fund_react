@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const EmptyAdsList = () => {
+const EmptyAdsList = props => {
   console.log('EmptyAdsList component');
   return (
     <div>

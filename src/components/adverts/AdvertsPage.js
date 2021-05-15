@@ -2,8 +2,9 @@ import React from 'react';
 import { getAdverts } from '../../api/adverts';
 import AdvertsList from './AdvertsList';
 import EmptyAdsList from './EmptyAdsList';
+import { NodepopLayout } from './../layout/NodepopLayout';
 
-const AdvertsPage = () => {
+const AdvertsPage = props => {
   const [adverts, setAdverts] = React.useState([]);
 
   React.useEffect(() => {
@@ -15,7 +16,14 @@ const AdvertsPage = () => {
       });
   }, []);
 
-  return adverts.length ? <AdvertsList adverts={adverts} /> : <EmptyAdsList />;
+  //FIXME: Runs this twice or more times
+  console.log('AdvertsPage adverts.length: ', adverts.length);
+
+  return (
+    <NodepopLayout {...props}>
+      {adverts.length ? <AdvertsList adverts={adverts} /> : <EmptyAdsList />}
+    </NodepopLayout>
+  );
 };
 
 // TODO: AdvertsPage.propTypes = {}

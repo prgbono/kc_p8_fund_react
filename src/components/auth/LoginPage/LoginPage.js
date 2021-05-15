@@ -2,8 +2,9 @@ import React from 'react';
 import LoginForm from './LoginForm';
 import { login } from './../../../api/auth.js';
 import PropTypes from 'prop-types';
+import { NodepopLayout } from './../../layout/NodepopLayout';
 
-function LoginPage({ onLogin }) {
+function LoginPage({ onLogin, props }) {
   const [error, setError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const isLogged = React.useRef(false);
@@ -30,11 +31,13 @@ function LoginPage({ onLogin }) {
   };
 
   return (
-    <div>
-      <h1>Log in to NodePop</h1>
-      <LoginForm onSubmit={handleSubmit} isLoading={isLoading} />
-      {error && <div>{error.message}</div>}
-    </div>
+    <NodepopLayout {...props}>
+      <div>
+        <h1>Log in to NodePop</h1>
+        <LoginForm onSubmit={handleSubmit} isLoading={isLoading} />
+        {error && <div>{error.message}</div>}
+      </div>
+    </NodepopLayout>
   );
 }
 

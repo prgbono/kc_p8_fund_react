@@ -25,9 +25,7 @@ export const NodepopLayout = ({
             </Button>
           )}
         </Header>
-        <Content>
-          {isLogged ? <AdvertsPage /> : <LoginPage onLogin={onHandleLogin} />}
-        </Content>
+        <Content>{children}</Content>
         <Footer>TODO: - Footer</Footer>
       </Layout>
     </>
