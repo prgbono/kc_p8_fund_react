@@ -14,8 +14,6 @@ export const NodepopLayout = ({
   onHandleLogout,
   ...props
 }) => {
-  console.log('NodepopLayout logout f(x), onHandleLogout: ', onHandleLogout);
-
   return (
     <>
       <Layout {...props}>

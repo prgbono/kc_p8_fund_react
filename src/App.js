@@ -10,7 +10,9 @@ import NotFoundPage from './components/common/NotFound';
 function App({ isAlreadyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isAlreadyLogged);
 
-  const handleLogin = () => setIsLogged(true);
+  const handleLogin = () => {
+    setIsLogged(true);
+  };
 
   const handleLogout = () => {
     setIsLogged(false);
@@ -34,7 +36,13 @@ function App({ isAlreadyLogged }) {
           }
         </Route>
         <Route exact path='/'>
-          <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />
+          {() =>
+            isLogged ? (
+              <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />
+            ) : (
+              <LoginPage onLogin={handleLogin} onLogout={handleLogout} />
+            )
+          }
         </Route>
         <Route path='/404'>
           <NotFoundPage />

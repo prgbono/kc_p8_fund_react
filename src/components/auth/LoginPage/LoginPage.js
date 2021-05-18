@@ -4,13 +4,10 @@ import { login } from './../../../api/auth.js';
 import PropTypes from 'prop-types';
 import { NodepopLayout } from './../../layout/NodepopLayout';
 
-function LoginPage({ onLogin, onLogout }) {
+function LoginPage({ onLogin, onLogout, ...props }) {
   const [error, setError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const isLogged = React.useRef(false);
-
-  console.log('LoginPage ++++');
-
   // Avoid React error: can’t perform a react state update on an unmounted component with useEffect and useRef
   React.useEffect(() => {
     if (isLogged.current) {
@@ -34,8 +31,9 @@ function LoginPage({ onLogin, onLogout }) {
     }
   };
 
+
   return (
-    <NodepopLayout>
+    <NodepopLayout isLogged={isLogged}>
       <div>
         <h1>Log in to NodePop</h1>
         <LoginForm onSubmit={handleSubmit} isLoading={isLoading} />
