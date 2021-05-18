@@ -4,7 +4,7 @@ import { login } from './../../../api/auth.js';
 import PropTypes from 'prop-types';
 import { NodepopLayout } from './../../layout/NodepopLayout';
 
-function LoginPage({ onLogin, props }) {
+function LoginPage({ onLogin, onLogout }) {
   const [error, setError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const isLogged = React.useRef(false);
@@ -14,7 +14,9 @@ function LoginPage({ onLogin, props }) {
     if (isLogged.current) {
       onLogin(); //set user logged in App.js state
     }
-  }, [isLogged.current, onLogin]);
+    //FIXME:
+    //}, [isLogged.current, onLogin]);
+  }, []);
 
   const handleSubmit = async credentials => {
     //TODO: Configure try-catch on Axios client
@@ -31,7 +33,7 @@ function LoginPage({ onLogin, props }) {
   };
 
   return (
-    <NodepopLayout {...props}>
+    <NodepopLayout>
       <div>
         <h1>Log in to NodePop</h1>
         <LoginForm onSubmit={handleSubmit} isLoading={isLoading} />

@@ -25,17 +25,22 @@ export const NodepopLayout = ({
             </Button>
           )}
         </Header>
-        <Content>{children}</Content>
+        <Content>
+          {children}
+          {/* This is the NodepopLayout content */}
+          {/* {isLogged ? <AdvertsPage /> : <LoginPage onLogin={onHandleLogin} />} */}
+        </Content>
         <Footer>TODO: - Footer</Footer>
       </Layout>
     </>
   );
 };
 
-NodepopLayout.propTypes = {
-  onHandleLogin: PropTypes.func.isRequired,
-  onHandleLogout: PropTypes.func.isRequired,
-};
+//FIXME:
+// NodepopLayout.propTypes = {
+//   onHandleLogin: PropTypes.func.isRequired,
+//   onHandleLogout: PropTypes.func.isRequired,
+// };
 
 NodepopLayout.defaultProps = {
   isLogged: false,

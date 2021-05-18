@@ -6,7 +6,7 @@ import storage from './../utils/storage.js';
 
 const authUrl = '/api/auth';
 
-export const login = async (credentials) => {
+export const login = async credentials => {
   const accessToken = await axios.post(`${authUrl}/login`, credentials);
   setAuthorizationHeader(accessToken);
   if (credentials.remember)

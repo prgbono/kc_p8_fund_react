@@ -24,12 +24,20 @@ function App({ isAlreadyLogged }) {
           <AdvertDetailPage />
         </Route>
         <Route path='/adverts' component={AdvertsPage} />
-        <Route path='/login' component={LoginPage} />
-        <Route path='/404'>
-          <NotFoundPage />
+        <Route path='/login'>
+          {() =>
+            isLogged ? (
+              <Redirect to='/' />
+            ) : (
+              <LoginPage onLogin={handleLogin} onLogout={handleLogout} />
+            )
+          }
         </Route>
         <Route exact path='/'>
           <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />
+        </Route>
+        <Route path='/404'>
+          <NotFoundPage />
         </Route>
         <Route>
           <Redirect to='/404' />

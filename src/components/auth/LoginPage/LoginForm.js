@@ -11,9 +11,9 @@ function LoginForm({ onSubmit, isLoading }) {
     remember: false,
   });
 
-  const handleCredentialsChange = (event) => {
+  const handleCredentialsChange = event => {
     // Return new credentials as an arrow function if new state depends on old one
-    setCredentials((oldCredentials) => {
+    setCredentials(oldCredentials => {
       const target = event.target;
       const value = target.type === 'checkbox' ? target.checked : target.value;
       const name = target.name;
@@ -29,7 +29,7 @@ function LoginForm({ onSubmit, isLoading }) {
   //Destructuring. Let us disable Login button if not populated any of the inputs
   const { email, password, remember } = credentials;
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
     onSubmit(credentials);
   };
