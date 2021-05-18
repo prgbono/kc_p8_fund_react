@@ -31,7 +31,7 @@ function LoginForm({ onSubmit, isLoading }) {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    onSubmit(credentials);
+    onSubmit(credentials); //este onSubmit es la func handleSubmit de LoginPage
   };
 
   return (

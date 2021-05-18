@@ -14,6 +14,8 @@ export const NodepopLayout = ({
   onHandleLogout,
   ...props
 }) => {
+  console.log('NodepopLayout logout f(x), onHandleLogout: ', onHandleLogout);
+
   return (
     <>
       <Layout {...props}>
@@ -25,11 +27,7 @@ export const NodepopLayout = ({
             </Button>
           )}
         </Header>
-        <Content>
-          {children}
-          {/* This is the NodepopLayout content */}
-          {/* {isLogged ? <AdvertsPage /> : <LoginPage onLogin={onHandleLogin} />} */}
-        </Content>
+        <Content>{children}</Content>
         <Footer>TODO: - Footer</Footer>
       </Layout>
     </>

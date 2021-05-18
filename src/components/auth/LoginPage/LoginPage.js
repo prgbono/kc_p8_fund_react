@@ -9,14 +9,16 @@ function LoginPage({ onLogin, onLogout }) {
   const [isLoading, setIsLoading] = React.useState(false);
   const isLogged = React.useRef(false);
 
+  console.log('LoginPage ++++');
+
   // Avoid React error: can’t perform a react state update on an unmounted component with useEffect and useRef
   React.useEffect(() => {
     if (isLogged.current) {
-      onLogin(); //set user logged in App.js state
+      onLogin(); //set user logged as true in App.js state. Function handleLogin
     }
     //FIXME:
     //}, [isLogged.current, onLogin]);
-  }, []);
+  }, [isLogged.current]);
 
   const handleSubmit = async credentials => {
     //TODO: Configure try-catch on Axios client
