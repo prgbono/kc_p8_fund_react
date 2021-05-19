@@ -6,6 +6,7 @@ import { Redirect, Route, Switch } from 'react-router';
 import { AdvertsPage, AdvertDetailPage } from './components/Adverts';
 import { LoginPage } from './components/auth/LoginPage';
 import NotFoundPage from './components/common/NotFound';
+import PrivateRoute from './components/auth/PrivateRoute/PrivateRoute';
 
 function App({ isAlreadyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isAlreadyLogged);
@@ -22,10 +23,21 @@ function App({ isAlreadyLogged }) {
   return (
     <div className='App' id='app'>
       <Switch>
-        <Route path='/adverts/:adId'>
+        {/* <Route path='/adverts/:adId'>
           <AdvertDetailPage />
-        </Route>
-        <Route path='/adverts' component={AdvertsPage} />
+        </Route> */}
+        <PrivateRoute isLogged={isLogged} path='/adverts/:adId'>
+          <AdvertDetailPage />
+        </PrivateRoute>
+
+        {/* <Route path='/adverts' component={AdvertsPage} /> */}
+        <PrivateRoute
+          path='/adverts'
+          isLogged={isLogged}
+          // onLogout={handleLogout}
+          component={AdvertsPage}
+        />
+
         <Route path='/login'>
           {() =>
             isLogged ? (
@@ -35,7 +47,8 @@ function App({ isAlreadyLogged }) {
             )
           }
         </Route>
-        <Route exact path='/'>
+
+        {/* <Route exact path='/'>
           {() =>
             isLogged ? (
               <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />
@@ -43,7 +56,20 @@ function App({ isAlreadyLogged }) {
               <LoginPage onLogin={handleLogin} onLogout={handleLogout} />
             )
           }
-        </Route>
+        </Route> */}
+        <PrivateRoute isLogged={isLogged} exact path='/'>
+          {() =>
+            isLogged ? (
+              <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />
+            ) : (
+              <LoginPage onLogin={handleLogin} onLogout={handleLogout} />
+            )
+          }
+        </PrivateRoute>
+
+        {/* <Route path='/advert/new'></Route> */}
+        <PrivateRoute isLogged={isLogged} path='/advert/new'></PrivateRoute>
+
         <Route path='/404'>
           <NotFoundPage />
         </Route>

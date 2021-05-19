@@ -1,7 +1,8 @@
 import { Card } from 'antd';
 import { Link } from 'react-router-dom';
+// import { NodepopLayout } from './../layout/NodepopLayout';
 
-const AdvertsList = ({ adverts }) => {
+const AdvertsList = ({ adverts, ...props }) => {
   const { Meta } = Card;
   const ads = adverts.map(({ id, price, sale, tags, name, ...advert }) => (
     <Link to={`/adverts/${id}`} key={id}>
