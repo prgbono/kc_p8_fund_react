@@ -31,9 +31,8 @@ function LoginPage({ onLogin, onLogout, ...props }) {
     }
   };
 
-
   return (
-    <NodepopLayout isLogged={isLogged}>
+    <NodepopLayout {...props}>
       <div>
         <h1>Log in to NodePop</h1>
         <LoginForm onSubmit={handleSubmit} isLoading={isLoading} />

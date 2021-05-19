@@ -4,7 +4,7 @@ import AdvertsList from './AdvertsList';
 import EmptyAdsList from './EmptyAdsList';
 import { NodepopLayout } from './../layout/NodepopLayout';
 
-const AdvertsPage = ({ onLogout }) => {
+const AdvertsPage = props => {
   const [adverts, setAdverts] = React.useState([]);
 
   // console.log('AdvertsPage props: ', onLogout);
@@ -22,7 +22,7 @@ const AdvertsPage = ({ onLogout }) => {
   // console.log('AdvertsPage adverts.length: ', adverts.length);
 
   return (
-    <NodepopLayout onHandleLogout={onLogout}>
+    <NodepopLayout {...props}>
       {adverts.length ? <AdvertsList adverts={adverts} /> : <EmptyAdsList />}
     </NodepopLayout>
   );
