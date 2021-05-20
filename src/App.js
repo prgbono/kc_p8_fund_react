@@ -23,20 +23,13 @@ function App({ isAlreadyLogged }) {
   return (
     <div className='App' id='app'>
       <Switch>
-        {/* <Route path='/adverts/:adId'>
-          <AdvertDetailPage />
-        </Route> */}
         <PrivateRoute isLogged={isLogged} path='/adverts/:adId'>
           <AdvertDetailPage />
         </PrivateRoute>
 
-        {/* <Route path='/adverts' component={AdvertsPage} /> */}
-        <PrivateRoute
-          path='/adverts'
-          isLogged={isLogged}
-          // onLogout={handleLogout}
-          component={AdvertsPage}
-        />
+        <PrivateRoute path='/adverts'>
+          {() => <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />}
+        </PrivateRoute>
 
         <Route path='/login'>
           {() =>
@@ -48,15 +41,6 @@ function App({ isAlreadyLogged }) {
           }
         </Route>
 
-        {/* <Route exact path='/'>
-          {() =>
-            isLogged ? (
-              <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />
-            ) : (
-              <LoginPage onLogin={handleLogin} onLogout={handleLogout} />
-            )
-          }
-        </Route> */}
         <PrivateRoute isLogged={isLogged} exact path='/'>
           {() =>
             isLogged ? (
@@ -68,7 +52,7 @@ function App({ isAlreadyLogged }) {
         </PrivateRoute>
 
         {/* <Route path='/advert/new'></Route> */}
-        <PrivateRoute isLogged={isLogged} path='/advert/new'></PrivateRoute>
+        {/* <PrivateRoute isLogged={isLogged} path='/advert/new'></PrivateRoute> */}
 
         <Route path='/404'>
           <NotFoundPage />
