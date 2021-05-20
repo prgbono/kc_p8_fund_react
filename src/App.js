@@ -27,7 +27,7 @@ function App({ isAlreadyLogged }) {
           <AdvertDetailPage />
         </PrivateRoute>
 
-        <PrivateRoute path='/adverts'>
+        <PrivateRoute isLogged={isLogged} path='/adverts'>
           {() => <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />}
         </PrivateRoute>
 
