@@ -1,11 +1,14 @@
+import React from 'react';
 import { NodepopLayout } from '../layout/NodepopLayout';
 
-const AdvertDetailPage = (props, { match }) => {
-  console.log(`🚀  FRG 🚀 ~ AdvertDetailPage ~ routeProps:`, match);
-  console.log(`🚀  FRG 🚀 ~ AdvertDetailPage ~ routeProps:`, props);
+const Advert = ({ match, ...props }) => {
+  // console.log(`🚀  FRG 🚀 ~ Advert ~ match:`, match);
+  // console.log(`🚀  FRG 🚀 ~ Advert ~ props:`, props);
+  // const { match } = props;
+  console.log(`🚀  FRG2 🚀 ~ Advert ~ match:`, match);
 
   // React.useEffect(() => {
-  //   const { match } = routeProps
+  //   const { match } = routeProps;
   //   getTweetDetail(match.params.tweetId)
   //     .then(tweet => this.setState({ tweet }))
   //     .catch(error => this.setState({ error }));
@@ -22,10 +25,10 @@ const AdvertDetailPage = (props, { match }) => {
   // }, []);
 
   return (
-    <NodepopLayout {...props}>
-      <p>This is the AdvertDetailPage component</p>
+    <NodepopLayout>
+      <p>This is the Advert component</p>
     </NodepopLayout>
   );
 };
 
-export default AdvertDetailPage;
+export default Advert;
