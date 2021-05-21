@@ -5,8 +5,8 @@ const axiosClient = axios.create({
 });
 
 axiosClient.interceptors.response.use(
-  (response) => response.data,
-  (error) => {
+  response => response.data,
+  error => {
     if (!error.response) {
       return Promise.reject({ message: error.message });
     }
@@ -17,8 +17,7 @@ axiosClient.interceptors.response.use(
   },
 );
 
-export const setAuthorizationHeader = (token) => {
-  //FIXME: Prettier - Avoid new line when opening array-brackets
+export const setAuthorizationHeader = token => {
   const { accessToken } = token;
   axiosClient.defaults.headers.common[
     'Authorization'

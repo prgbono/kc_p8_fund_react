@@ -11,3 +11,8 @@ export const getAdvert = adId => {
   const url = `${advertsBaseUrl}/${adId}`;
   return axios.get(url);
 };
+
+export const deleteAdvert = adId => {
+  const url = `${advertsBaseUrl}/${adId}`;
+  return axios.delete(url);
+};

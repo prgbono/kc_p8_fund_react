@@ -1,6 +1,7 @@
-import { Card, Avatar } from 'antd';
+import { Card, Avatar, Button } from 'antd';
 import avatar from './../../assets/images/avatar.png';
 import adPlaceholder from './../../assets/images/adPlaceholder.png';
+import PopupConfirm from '../common/PopupConfirm';
 
 const AdvertDetail = ({ advert }) => {
   const { Meta } = Card;
@@ -20,7 +21,11 @@ const AdvertDetail = ({ advert }) => {
           }
         />
       }
-      actions={[`${price}€`, sale ? 'Sell' : 'Buy']}
+      actions={[
+        <Button type='text'>{`${price}€`}</Button>,
+        <Button type='text'>{sale ? 'Sell' : 'Buy'}</Button>,
+        <PopupConfirm adId={advert.id}></PopupConfirm>,
+      ]}
     >
       <Meta
         avatar={<Avatar src={avatar} />}
