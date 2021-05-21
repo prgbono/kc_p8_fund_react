@@ -3,7 +3,7 @@ import './App.css';
 import { logout } from './api/auth.js';
 import propTypes from 'prop-types';
 import { Redirect, Route, Switch } from 'react-router';
-import { AdvertsPage, Advert } from './components/Adverts';
+import { AdvertsPage, AdvertPage } from './components/Adverts';
 import { LoginPage } from './components/auth/LoginPage';
 import NotFoundPage from './components/common/NotFound';
 import PrivateRoute from './components/auth/PrivateRoute/PrivateRoute';
@@ -24,7 +24,7 @@ function App({ isAlreadyLogged }) {
     <div className='App' id='app'>
       <Switch>
         <PrivateRoute isLogged={isLogged} path='/adverts/:adId'>
-          <Advert />
+          {routeParams => <AdvertPage isLogged={isLogged} {...routeParams} />}
         </PrivateRoute>
 
         <PrivateRoute isLogged={isLogged} path='/adverts'>
