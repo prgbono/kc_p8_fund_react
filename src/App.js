@@ -7,6 +7,7 @@ import { AdvertsPage, AdvertPage } from './components/Adverts';
 import { LoginPage } from './components/auth/LoginPage';
 import NotFoundPage from './components/common/NotFound';
 import PrivateRoute from './components/auth/PrivateRoute/PrivateRoute';
+import NewAdvertPage from './components/NewAdvert/NewAdvertPage';
 
 function App({ isAlreadyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isAlreadyLogged);
@@ -26,11 +27,9 @@ function App({ isAlreadyLogged }) {
         <PrivateRoute isLogged={isLogged} path='/adverts/:adId'>
           {routeParams => <AdvertPage isLogged={isLogged} {...routeParams} />}
         </PrivateRoute>
-
         <PrivateRoute isLogged={isLogged} path='/adverts'>
           {() => <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />}
         </PrivateRoute>
-
         <Route path='/login'>
           {() =>
             isLogged ? (
@@ -40,7 +39,6 @@ function App({ isAlreadyLogged }) {
             )
           }
         </Route>
-
         <PrivateRoute isLogged={isLogged} exact path='/'>
           {() =>
             isLogged ? (
@@ -50,10 +48,10 @@ function App({ isAlreadyLogged }) {
             )
           }
         </PrivateRoute>
-
-        {/* <Route path='/advert/new'></Route> */}
-        {/* <PrivateRoute isLogged={isLogged} path='/advert/new'></PrivateRoute> */}
-
+        {/* TODO: <Route path='/advert/new'></Route> */} TESTEAR!!!
+        <PrivateRoute isLogged={isLogged} path='/advert/new'>
+          <NewAdvertPage></NewAdvertPage>
+        </PrivateRoute>
         <Route path='/404'>
           <NotFoundPage />
         </Route>

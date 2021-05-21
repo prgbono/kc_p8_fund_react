@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Layout } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const { Header, Footer, Content } = Layout;
@@ -16,6 +17,9 @@ export const NodepopLayout = ({
     <>
       <Layout {...props}>
         <Header>
+          <Button type='primary'>
+            <Link to='/advert/new'>New Ad</Link>
+          </Button>
           <Button icon={<SearchOutlined />}>Search</Button>
           {isLogged && (
             <Button type='primary' onClick={onHandleLogout}>

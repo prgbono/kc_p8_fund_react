@@ -1,5 +1,12 @@
-const NewAdvertPage = () => {
-  return <div>This is the component / page for New Advert Page</div>
-}
+import { NodepopLayout } from './../layout/NodepopLayout';
 
-export default NewAdvertPage
+const NewAdvertPage = () => {
+  return (
+    <NodepopLayout>
+      This is the component / page for New Advert Page
+    </NodepopLayout>
+  );
+};
+
+//TODO: NewAdvertPage.propTypes
+export default NewAdvertPage;
