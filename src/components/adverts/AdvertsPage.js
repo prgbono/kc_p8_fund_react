@@ -10,7 +10,7 @@ const AdvertsPage = props => {
     getAdverts()
       .then(setAdverts)
       .catch(error => {
-        console.log('Error: ', error);
+        console.log('Error getting adverts: ', error);
       });
   }, []);
 
