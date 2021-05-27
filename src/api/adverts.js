@@ -21,3 +21,8 @@ export const getTags = () => {
   const url = `${advertsBaseUrl}/tags`;
   return axios.get(url);
 };
+
+export const createAdvert = advert => {
+  const url = `${advertsBaseUrl}`;
+  return axios.post(url, advert);
+};

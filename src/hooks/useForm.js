@@ -4,16 +4,28 @@ const useForm = initialValue => {
   const [value, setValue] = useState(initialValue);
 
   const handleChange = event => {
-    setValue(oldValue => ({
-      ...oldValue,
-      [event?.target?.name]: event?.target?.value,
-    }));
+    // TODO: Refactor!
+    if (event.length) {
+      setValue(oldValue => ({
+        ...oldValue,
+        tags: event,
+      }));
+    } else if (event?.target?.name === 'sale') {
+      setValue(oldValue => ({
+        ...oldValue,
+        sale: event?.target?.checked,
+      }));
+    } else {
+      setValue(oldValue => ({
+        ...oldValue,
+        [event?.target?.name]: event?.target?.value,
+      }));
+    }
   };
 
   const handleSubmit = afterPreventDefault => {
     return event => {
       event.preventDefault();
-      //validations
       afterPreventDefault(event);
     };
   };

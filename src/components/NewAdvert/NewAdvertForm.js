@@ -2,6 +2,8 @@ import React from 'react';
 import { Input, Checkbox, Select } from 'antd';
 import useForm from './../../../src/hooks/useForm';
 import { getTags } from './../../api/adverts';
+import InputFile from './../shared/InputFile';
+import Button from './../shared/Button';
 
 const NewAdvertForm = ({ onSubmit }) => {
   const inputRef = React.useRef(null);
@@ -26,7 +28,7 @@ const NewAdvertForm = ({ onSubmit }) => {
 
   const [advert, handleChange, handleSubmit] = useForm({
     name: '',
-    sale: true,
+    sale: false,
     price: 0,
     tags: [],
     photo: null,
@@ -34,6 +36,12 @@ const NewAdvertForm = ({ onSubmit }) => {
 
   const afterPreventDefault = ev => {
     onSubmit(advert);
+  };
+
+  const validation = () => {
+    const { name, price, tags } = advert;
+    const aux = (name !== null || '') && price > 0 && tags.length > 0;
+    return aux;
   };
 
   return (
@@ -58,17 +66,24 @@ const NewAdvertForm = ({ onSubmit }) => {
         value={advert.tags}
         allowClear
         style={{ width: '100%' }}
-        placeholder='Please select tag/s'
+        placeholder='Please select one at least'
         onChange={handleChange}
       >
         {tags?.map(tag => (
           <Option key={tag}>{tag}</Option>
         ))}
       </Select>
-      <Checkbox onChange={handleChange}>Sale?</Checkbox>
-      <button variant='primary'>Add</button>
+      <InputFile name='photo' onChange={handleChange} />
+      <Checkbox name='sale' onChange={handleChange}>
+        Sale?
+      </Checkbox>
+      <Button primary disabled={!validation()}>
+        Add
+      </Button>
     </form>
   );
 };
+
+// TODO: NewAdvertForm.propTypes = {}
 
 export default NewAdvertForm;
