@@ -17,15 +17,14 @@ export const NodepopLayout = ({
     <>
       <Layout {...props}>
         <Header>
-          <Button type='primary'>
+          <Button>
+            <Link to='/adverts'>All Ads</Link>
+          </Button>
+          <Button>
             <Link to='/advert/new'>New Ad</Link>
           </Button>
           <Button icon={<SearchOutlined />}>Search</Button>
-          {isLogged && (
-            <Button type='primary' onClick={onHandleLogout}>
-              Logout
-            </Button>
-          )}
+          {isLogged && <Button onClick={onHandleLogout}>Logout</Button>}
         </Header>
         <Content>{children}</Content>
         <Footer>TODO: - Footer</Footer>
