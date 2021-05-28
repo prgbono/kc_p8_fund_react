@@ -63,7 +63,6 @@ function LoginForm({ onSubmit, isLoading }) {
       </label>
       <Button
         type='submit'
-        className='loginForm-submit'
         variant='primary'
         disabled={isLoading || !email || !password}
       >

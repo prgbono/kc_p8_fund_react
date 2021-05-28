@@ -11,6 +11,7 @@ const AdvertsPage = props => {
       .then(setAdverts)
       .catch(error => {
         console.log('Error getting adverts: ', error);
+        // TODO: Handle the 'Unauthorised error. Now when says there is no Ads when happens
       });
   }, []);
 

@@ -9,11 +9,16 @@ const NewAdvertPage = () => {
 
   const handleSubmit = async newAdvert => {
     console.log('NewAdvertPAge, handleSubmit. newAdvert: ', newAdvert);
+    const newAdvertFormData = new FormData();
+    Object.keys(newAdvert).forEach(key => {
+      newAdvert[key] !== null && newAdvertFormData.append(key, newAdvert[key]);
+    });
     try {
-      const advert = await createAdvert(newAdvert);
+      const advert = await createAdvert(newAdvertFormData);
       setCreatedAdvert(advert);
     } catch (error) {
       setError(true);
+      console.log('Error adding advert, error: ', error.message);
     }
   };
 
