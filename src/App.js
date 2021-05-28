@@ -48,7 +48,6 @@ function App({ isAlreadyLogged }) {
             )
           }
         </PrivateRoute>
-        {/* TODO: <Route path='/advert/new'></Route> */} TESTEAR!!!
         <PrivateRoute isLogged={isLogged} path='/advert/new'>
           <NewAdvertPage></NewAdvertPage>
         </PrivateRoute>
