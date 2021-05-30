@@ -1,18 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Layout } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import AuthContext from './../auth/authContext';
 
 const { Header, Footer, Content } = Layout;
 
-export const NodepopLayout = ({
-  children,
-  isLogged,
-  onHandleLogin,
-  onHandleLogout,
-  ...props
-}) => {
+export const NodepopLayout = ({ children, ...props }) => {
+  const { isLogged, onLogout } = useContext(AuthContext);
   return (
     <>
       <Layout {...props}>
@@ -24,7 +19,7 @@ export const NodepopLayout = ({
             <Link to='/advert/new'>New Ad</Link>
           </Button>
           <Button icon={<SearchOutlined />}>Search</Button>
-          {isLogged && <Button onClick={onHandleLogout}>Logout</Button>}
+          {isLogged && <Button onClick={onLogout}>Logout</Button>}
         </Header>
         <Content>{children}</Content>
         <Footer>TODO: - Footer</Footer>
@@ -32,12 +27,6 @@ export const NodepopLayout = ({
     </>
   );
 };
-
-//FIXME:
-// NodepopLayout.propTypes = {
-//   onHandleLogin: PropTypes.func.isRequired,
-//   onHandleLogout: PropTypes.func.isRequired,
-// };
 
 NodepopLayout.defaultProps = {
   isLogged: false,

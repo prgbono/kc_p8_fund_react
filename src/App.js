@@ -25,32 +25,18 @@ function App({ isAlreadyLogged }) {
   return (
     <div className='App' id='app'>
       <AuthContextProvider
-        value={{ isLogged, onlogout: handleLogout, onLogin: handleLogin }}
+        value={{ isLogged, onLogout: handleLogout, onLogin: handleLogin }}
       >
         <Switch>
           <PrivateRoute path='/adverts/:adId'>
             {routeParams => <AdvertPage {...routeParams} />}
           </PrivateRoute>
-          <PrivateRoute path='/adverts'>
-            {() => <AdvertsPage onLogout={handleLogout} />}
-          </PrivateRoute>
+          <PrivateRoute path='/adverts'>{() => <AdvertsPage />}</PrivateRoute>
           <Route path='/login'>
-            {() =>
-              isLogged ? (
-                <Redirect to='/' />
-              ) : (
-                <LoginPage onLogout={handleLogout} />
-              )
-            }
+            {() => (isLogged ? <Redirect to='/' /> : <LoginPage />)}
           </Route>
           <PrivateRoute exact path='/'>
-            {() =>
-              isLogged ? (
-                <AdvertsPage onLogout={handleLogout} />
-              ) : (
-                <LoginPage onLogout={handleLogout} />
-              )
-            }
+            {() => (isLogged ? <AdvertsPage /> : <LoginPage />)}
           </PrivateRoute>
           <PrivateRoute path='/advert/new'>
             <NewAdvertPage></NewAdvertPage>

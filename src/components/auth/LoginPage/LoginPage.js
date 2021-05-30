@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import LoginForm from './LoginForm';
 import { login } from './../../../api/auth.js';
-import PropTypes from 'prop-types';
 import { NodepopLayout } from './../../layout/NodepopLayout';
 import AuthContext from './../authContext';
 
@@ -42,9 +41,5 @@ function LoginPage(...props) {
     </NodepopLayout>
   );
 }
-
-LoginPage.propTypes = {
-  onLogin: PropTypes.func.isRequired,
-};
 
 export default LoginPage;
