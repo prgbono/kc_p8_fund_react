@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import LoginForm from './LoginForm';
 import { login } from './../../../api/auth.js';
 import PropTypes from 'prop-types';
 import { NodepopLayout } from './../../layout/NodepopLayout';
+import AuthContext from './../authContext';
 
-function LoginPage({ onLogin, onLogout, ...props }) {
+function LoginPage(...props) {
   const [error, setError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const isLogged = React.useRef(false);
+  const { onLogin } = useContext(AuthContext);
+
   // Avoid React error: can’t perform a react state update on an unmounted component with useEffect and useRef
   React.useEffect(() => {
     if (isLogged.current) {
       onLogin(); //set user logged as true in App.js state. Function handleLogin
     }
-    //FIXME:
-    //}, [isLogged.current, onLogin]);
   }, [isLogged.current]);
 
   const handleSubmit = async credentials => {
