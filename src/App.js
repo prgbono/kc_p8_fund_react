@@ -28,11 +28,11 @@ function App({ isAlreadyLogged }) {
         value={{ isLogged, onlogout: handleLogout, onLogin: handleLogin }}
       >
         <Switch>
-          <PrivateRoute isLogged={isLogged} path='/adverts/:adId'>
-            {routeParams => <AdvertPage isLogged={isLogged} {...routeParams} />}
+          <PrivateRoute path='/adverts/:adId'>
+            {routeParams => <AdvertPage {...routeParams} />}
           </PrivateRoute>
-          <PrivateRoute isLogged={isLogged} path='/adverts'>
-            {() => <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />}
+          <PrivateRoute path='/adverts'>
+            {() => <AdvertsPage onLogout={handleLogout} />}
           </PrivateRoute>
           <Route path='/login'>
             {() =>
@@ -43,16 +43,16 @@ function App({ isAlreadyLogged }) {
               )
             }
           </Route>
-          <PrivateRoute isLogged={isLogged} exact path='/'>
+          <PrivateRoute exact path='/'>
             {() =>
               isLogged ? (
-                <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />
+                <AdvertsPage onLogout={handleLogout} />
               ) : (
                 <LoginPage onLogin={handleLogin} onLogout={handleLogout} />
               )
             }
           </PrivateRoute>
-          <PrivateRoute isLogged={isLogged} path='/advert/new'>
+          <PrivateRoute path='/advert/new'>
             <NewAdvertPage></NewAdvertPage>
           </PrivateRoute>
           <Route path='/404'>
