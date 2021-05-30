@@ -8,6 +8,7 @@ import { LoginPage } from './components/auth/LoginPage';
 import NotFoundPage from './components/common/NotFound';
 import PrivateRoute from './components/auth/PrivateRoute/PrivateRoute';
 import NewAdvertPage from './components/NewAdvert/NewAdvertPage';
+import { AuthContextProvider } from './components/auth/authContext';
 
 function App({ isAlreadyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isAlreadyLogged);
@@ -23,41 +24,45 @@ function App({ isAlreadyLogged }) {
 
   return (
     <div className='App' id='app'>
-      <Switch>
-        <PrivateRoute isLogged={isLogged} path='/adverts/:adId'>
-          {routeParams => <AdvertPage isLogged={isLogged} {...routeParams} />}
-        </PrivateRoute>
-        <PrivateRoute isLogged={isLogged} path='/adverts'>
-          {() => <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />}
-        </PrivateRoute>
-        <Route path='/login'>
-          {() =>
-            isLogged ? (
-              <Redirect to='/' />
-            ) : (
-              <LoginPage onLogin={handleLogin} onLogout={handleLogout} />
-            )
-          }
-        </Route>
-        <PrivateRoute isLogged={isLogged} exact path='/'>
-          {() =>
-            isLogged ? (
-              <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />
-            ) : (
-              <LoginPage onLogin={handleLogin} onLogout={handleLogout} />
-            )
-          }
-        </PrivateRoute>
-        <PrivateRoute isLogged={isLogged} path='/advert/new'>
-          <NewAdvertPage></NewAdvertPage>
-        </PrivateRoute>
-        <Route path='/404'>
-          <NotFoundPage />
-        </Route>
-        <Route>
-          <Redirect to='/404' />
-        </Route>
-      </Switch>
+      <AuthContextProvider
+        value={{ isLogged, onlogout: handleLogout, onLogin: handleLogin }}
+      >
+        <Switch>
+          <PrivateRoute isLogged={isLogged} path='/adverts/:adId'>
+            {routeParams => <AdvertPage isLogged={isLogged} {...routeParams} />}
+          </PrivateRoute>
+          <PrivateRoute isLogged={isLogged} path='/adverts'>
+            {() => <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />}
+          </PrivateRoute>
+          <Route path='/login'>
+            {() =>
+              isLogged ? (
+                <Redirect to='/' />
+              ) : (
+                <LoginPage onLogin={handleLogin} onLogout={handleLogout} />
+              )
+            }
+          </Route>
+          <PrivateRoute isLogged={isLogged} exact path='/'>
+            {() =>
+              isLogged ? (
+                <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />
+              ) : (
+                <LoginPage onLogin={handleLogin} onLogout={handleLogout} />
+              )
+            }
+          </PrivateRoute>
+          <PrivateRoute isLogged={isLogged} path='/advert/new'>
+            <NewAdvertPage></NewAdvertPage>
+          </PrivateRoute>
+          <Route path='/404'>
+            <NotFoundPage />
+          </Route>
+          <Route>
+            <Redirect to='/404' />
+          </Route>
+        </Switch>
+      </AuthContextProvider>
     </div>
   );
 }
