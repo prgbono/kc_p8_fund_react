@@ -39,7 +39,7 @@ function App({ isAlreadyLogged }) {
               isLogged ? (
                 <Redirect to='/' />
               ) : (
-                <LoginPage onLogin={handleLogin} onLogout={handleLogout} />
+                <LoginPage onLogout={handleLogout} />
               )
             }
           </Route>
@@ -48,7 +48,7 @@ function App({ isAlreadyLogged }) {
               isLogged ? (
                 <AdvertsPage onLogout={handleLogout} />
               ) : (
-                <LoginPage onLogin={handleLogin} onLogout={handleLogout} />
+                <LoginPage onLogout={handleLogout} />
               )
             }
           </PrivateRoute>
