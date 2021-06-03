@@ -3,3 +3,8 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+}

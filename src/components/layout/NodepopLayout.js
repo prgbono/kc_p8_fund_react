@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Button, Layout } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import AuthContext from './../auth/authContext';
 import './NodepopLayout.css';
+import Filters from './../common/Filters';
 
 const { Header, Footer, Content } = Layout;
 
@@ -13,14 +13,20 @@ export const NodepopLayout = ({ children, ...props }) => {
     <>
       <Layout {...props}>
         <Header>
-          <Button>
-            <Link to='/adverts'>All Ads</Link>
-          </Button>
-          <Button>
-            <Link to='/advert/new'>New Ad</Link>
-          </Button>
-          <Button icon={<SearchOutlined />}>Search</Button>
-          {isLogged && <Button onClick={onLogout}>Logout</Button>}
+          <div class='navBar'>
+            <div>
+              <Button>
+                <NavLink to='/adverts'>All Ads</NavLink>
+              </Button>
+              <Button>
+                <NavLink to='/advert/new'>New Ad</NavLink>
+              </Button>
+              {isLogged && <Button onClick={onLogout}>Logout</Button>}
+            </div>
+            <div>
+              <Filters></Filters>
+            </div>
+          </div>
         </Header>
         <Content class='columns'>{children}</Content>
         <Footer>TODO: - Footer</Footer>
