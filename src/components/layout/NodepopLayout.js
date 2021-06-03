@@ -3,6 +3,7 @@ import { Button, Layout } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import AuthContext from './../auth/authContext';
+import './NodepopLayout.css';
 
 const { Header, Footer, Content } = Layout;
 
@@ -21,7 +22,7 @@ export const NodepopLayout = ({ children, ...props }) => {
           <Button icon={<SearchOutlined />}>Search</Button>
           {isLogged && <Button onClick={onLogout}>Logout</Button>}
         </Header>
-        <Content>{children}</Content>
+        <Content class='columns'>{children}</Content>
         <Footer>TODO: - Footer</Footer>
       </Layout>
     </>
