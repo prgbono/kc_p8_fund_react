@@ -4,6 +4,7 @@ import useForm from './../../../src/hooks/useForm';
 import { getTags } from './../../api/adverts';
 import InputFile from './../shared/InputFile';
 import Button from './../shared/Button';
+import T from 'prop-types';
 
 const NewAdvertForm = ({ onSubmit }) => {
   const inputRef = React.useRef(null);
@@ -84,6 +85,8 @@ const NewAdvertForm = ({ onSubmit }) => {
   );
 };
 
-// TODO: NewAdvertForm.propTypes = {}
+NewAdvertForm.propTypes = {
+  onSubmit: T.func.isRequired,
+};
 
 export default NewAdvertForm;

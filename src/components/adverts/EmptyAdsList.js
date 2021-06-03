@@ -13,6 +13,4 @@ const EmptyAdsList = props => {
   );
 };
 
-//TODO: EmptyAdsList.propTypes = {};
-
 export default EmptyAdsList;

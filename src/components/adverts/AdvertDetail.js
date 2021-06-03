@@ -1,5 +1,6 @@
 import { Card, Avatar, Button } from 'antd';
 import avatar from './../../assets/images/avatar.png';
+import T from 'prop-types';
 import adPlaceholder from './../../assets/images/adPlaceholder.png';
 import PopupConfirm from '../common/PopupConfirm';
 
@@ -35,6 +36,19 @@ const AdvertDetail = ({ advert }) => {
     </Card>
   );
 };
-//TODO: AdvertDetail.propTypes
+
+export const advertType = {
+  name: T.string,
+  price: T.number,
+  sale: T.bool,
+  tags: T.arrayOf(T.string),
+  photo: T.string,
+};
+
+AdvertDetail.propTypes = advertType;
+
+AdvertDetail.defaultProps = {
+  photo: null,
+};
 
 export default AdvertDetail;

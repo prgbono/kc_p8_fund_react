@@ -26,5 +26,4 @@ const AdvertsPage = props => {
   );
 };
 
-// TODO: AdvertsPage.propTypes = {}
 export default AdvertsPage;

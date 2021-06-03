@@ -74,6 +74,7 @@ function LoginForm({ onSubmit, isLoading }) {
 
 LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 LoginForm.defaultProps = {

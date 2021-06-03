@@ -1,6 +1,7 @@
 import { Card } from 'antd';
 import { Link } from 'react-router-dom';
-// import { NodepopLayout } from './../layout/NodepopLayout';
+import T from 'prop-types';
+import { advertType } from './AdvertDetail';
 
 const AdvertsList = ({ adverts, ...props }) => {
   const { Meta } = Card;
@@ -19,6 +20,8 @@ const AdvertsList = ({ adverts, ...props }) => {
   return ads;
 };
 
-// TODO: AdvertsList.propTypes = {}
+AdvertsList.propTypes = {
+  adverts: T.arrayOf(T.shape(advertType)),
+};
 
 export default AdvertsList;

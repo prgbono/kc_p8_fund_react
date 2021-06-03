@@ -34,5 +34,4 @@ const NewAdvertPage = () => {
   );
 };
 
-//TODO: NewAdvertPage.propTypes
 export default NewAdvertPage;

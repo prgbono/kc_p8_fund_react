@@ -31,7 +31,9 @@ function App({ isAlreadyLogged }) {
           <PrivateRoute path='/adverts/:adId'>
             {routeParams => <AdvertPage {...routeParams} />}
           </PrivateRoute>
-          <PrivateRoute path='/adverts'>{() => <AdvertsPage />}</PrivateRoute>
+          <PrivateRoute path='/adverts'>
+            <AdvertsPage />
+          </PrivateRoute>
           <Route path='/login'>
             {() => (isLogged ? <Redirect to='/' /> : <LoginPage />)}
           </Route>
@@ -39,7 +41,7 @@ function App({ isAlreadyLogged }) {
             {() => (isLogged ? <AdvertsPage /> : <LoginPage />)}
           </PrivateRoute>
           <PrivateRoute path='/advert/new'>
-            <NewAdvertPage></NewAdvertPage>
+            <NewAdvertPage />
           </PrivateRoute>
           <Route path='/404'>
             <NotFoundPage />

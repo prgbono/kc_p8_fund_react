@@ -8,5 +8,4 @@ const NotFoundPage = props => {
   );
 };
 
-//TODO: NotFoundPage.propTypes = {};
 export default NotFoundPage;

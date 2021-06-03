@@ -15,7 +15,7 @@ function LoginPage(...props) {
     if (isLogged.current) {
       onLogin(); //set user logged as true in App.js state. Function handleLogin
     }
-  }, [isLogged.current]);
+  });
 
   const handleSubmit = async credentials => {
     //TODO: Configure try-catch on Axios client

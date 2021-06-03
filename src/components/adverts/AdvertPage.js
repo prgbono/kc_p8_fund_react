@@ -27,5 +27,4 @@ const AdvertPage = ({ match, ...props }) => {
   return <NodepopLayout>{<AdvertDetail advert={advert} />}</NodepopLayout>;
 };
 
-//TODO: PropTypes
 export default AdvertPage;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Popconfirm, Button } from 'antd';
 import { deleteAdvert } from './../../api/adverts';
 import { useHistory } from 'react-router-dom';
+import T from 'prop-types';
 
 const PopupConfirm = adId => {
   const [visible, setVisible] = React.useState(false);
@@ -45,5 +46,9 @@ const PopupConfirm = adId => {
     </>
   );
 };
-//TODO: PopupConfirm.propTypes
+
+PopupConfirm.propTypes = {
+  adId: T.string,
+};
+
 export default PopupConfirm;
