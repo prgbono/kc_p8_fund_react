@@ -12,7 +12,7 @@ const NewAdvertForm = ({ onSubmit }) => {
     inputRef.current.focus();
   }, []);
 
-  // Tags
+  // Tags TODO: DRY, FiltersForm
   const [tags, setTags] = React.useState(null);
   const { Option } = Select;
 
@@ -41,8 +41,7 @@ const NewAdvertForm = ({ onSubmit }) => {
 
   const validation = () => {
     const { name, price, tags } = advert;
-    const aux = (name !== null || '') && price > 0 && tags.length > 0;
-    return aux;
+    return (name !== null || '') && price > 0 && tags.length > 0;
   };
 
   return (
