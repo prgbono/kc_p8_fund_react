@@ -5,8 +5,10 @@ import { saleFilter } from './../Adverts/filters';
 import { Button } from 'antd';
 import PriceInterval from './../shared/PriceInterval';
 import SelectTags from './../shared/SelectTags';
+import T from 'prop-types';
+import { advert } from './propTypes';
 
-const FiltersForm = ({ initialFilters, onFilter }) => {
+const FiltersForm = ({ initialFilters, onFilter, prices }) => {
   const [filters, handleChange, handleSubmit] = useForm(initialFilters);
 
   //TODO: focus on Search input
@@ -22,6 +24,8 @@ const FiltersForm = ({ initialFilters, onFilter }) => {
   // };
 
   const { name, sale, price, tags } = filters;
+  const min = 0;
+  const max = 25000;
 
   const inputNameFilterStyle = {
     height: '32px',
@@ -58,18 +62,29 @@ const FiltersForm = ({ initialFilters, onFilter }) => {
       <SelectTags multiple name='tags' value={tags} onChange={handleChange} />
       <Button type='submit'>Filter</Button>
       <PriceInterval
-        min={0}
-        max={1000}
+        min={min}
+        max={max}
         value={price}
         name='price'
         onChange={handleChange}
-        style={{ width: 400 }}
-        marks={(100, 500)}
+        style={{ width: '50%', left:'25%', marginBottom: '3px' }}
+        marks={{ [min]: min, [max]: max }}
       />
     </form>
   );
 };
 
-//TODO: FiltersForm.propTypes = {}
+const filtersProp = T.shape({
+  ...advert,
+  sale: T.oneOf(Object.keys(saleFilter)).isRequired,
+  price: T.arrayOf(T.number.isRequired).isRequired,
+});
+
+FiltersForm.propTypes = {
+  initialFilters: filtersProp.isRequired,
+  defaultFilters: filtersProp.isRequired,
+  onFilter: T.func.isRequired,
+  prices: T.arrayOf(T.number.isRequired).isRequired,
+};
 
 export default FiltersForm;
