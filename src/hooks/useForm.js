@@ -3,36 +3,33 @@ import React, { useState } from 'react';
 const useForm = initialValue => {
   const [value, setValue] = useState(initialValue);
 
-  const handleChange = event => {
-    // TODO: Refactor! Not reusable in this way!! Use destructuring on event object...
-    if (event.length) {
-      setValue(oldValue => ({
-        ...oldValue,
-        tags: event,
-      }));
-    } else if (event?.target?.name === 'sale') {
-      setValue(oldValue => ({
-        ...oldValue,
-        sale: event?.target?.checked,
-      }));
-    } else if (event?.target?.name === 'photo') {
-      setValue(oldValue => ({
-        ...oldValue,
-        photo: event?.target?.files[0] || null,
-      }));
-    } else {
-      setValue(oldValue => ({
-        ...oldValue,
-        [event?.target?.name]: event?.target?.value,
-      }));
-    }
+  const getValueByType = {
+    checkbox: ({ checked }) => checked,
+    number: ({ value }) => Number(value),
+    'select-multiple': ({ selectedOptions }) =>
+      [...selectedOptions].map(({ value }) => value),
+    file: ({ files }) => files[0] || null,
   };
 
-  const handleSubmit = afterPreventDefault => {
-    return event => {
-      event.preventDefault();
-      afterPreventDefault(event);
-    };
+  const defaultGetValue = ({ value }) => value;
+
+  const handleChange = ev => {
+    const valueGetter = getValueByType[ev.target.type] || defaultGetValue;
+    updateFormValue(ev.target.name, valueGetter(ev.target));
+    console.log('useForm, handleChange, event: ',ev);
+    
+  };
+
+  const updateFormValue = (name, value) => {
+    setValue(currentFormValue => ({
+      ...currentFormValue,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = onSubmit => ev => {
+    ev.preventDefault();
+    onSubmit(value);
   };
 
   return [value, handleChange, handleSubmit];

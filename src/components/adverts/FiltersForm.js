@@ -33,8 +33,15 @@ const FiltersForm = ({ initialFilters, onFilter }) => {
     borderColor: '#d9d9d9',
   };
 
+  const filterArea = {
+    width: '100%',
+    background: '#001529',
+  };
+
+  console.log('FiltersForm, filters: ', filters);
+
   return (
-    <form onSubmit={handleSubmit(onFilter)}>
+    <form onSubmit={handleSubmit(onFilter)} style={filterArea}>
       <input
         name='name'
         value={name}
